@@ -1,1 +1,14 @@
-
+server:
+  port: 8081
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+  datasource:
+    url: "jdbc:postgresql://rc1a-uiaek510ekpcnict.mdb.yandexcloud.net:6432/forkjoinbd"
+    username: "postgresql"
+    password: "postgresql"
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    enabled: true
+    change-log: db.changelog/db.changelog-master.yaml
