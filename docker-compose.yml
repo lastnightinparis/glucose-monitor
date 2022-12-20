@@ -1,0 +1,18 @@
+version: '2'
+services:
+  glucose-monitor:
+    container_name: glucose-monitor
+    image: glucose-monitor:latest
+    ports:
+      - 8081:8081
+    expose:
+      - 8081
+  cloud-gateway:
+    container_name: cloud-gateway
+    image: cloud-gateway:latest
+    ports:
+      - 8080:8080
+    links:
+      - glucose-monitor
+    depends_on:
+      - glucose-monitor

@@ -28,14 +28,13 @@ CREATE TABLE meal
 CREATE TABLE diaryentry
 (
     diaryentry_id UUID primary key,
-    diary_id      UUID      not null,
     meal_id       UUID,
+    diary_id      UUID      not null,
     glucose_level decimal   not null,
     datetime      timestamp not null,
     FOREIGN KEY (diary_id) REFERENCES diary (diary_id),
     FOREIGN KEY (meal_id) REFERENCES meal (meal_id)
 );
-
 
 CREATE TABLE product
 (
@@ -47,5 +46,7 @@ CREATE TABLE meal_product
 (
     meal_id    UUID not null,
     product_id UUID not null,
-    PRIMARY KEY (meal_id, product_id)
+    PRIMARY KEY (meal_id, product_id),
+    FOREIGN KEY (meal_id) REFERENCES meal (meal_id),
+    FOREIGN KEY (product_id) REFERENCES product (product_id)
 );

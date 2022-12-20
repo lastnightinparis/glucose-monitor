@@ -1,12 +1,9 @@
 package forkjoin.glucosemonitor.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,10 +17,9 @@ public class Diary implements Serializable {
     private UUID id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "diary")
-    @ToString.Exclude
-    private List<DiaryEntry> diaryEntries = new ArrayList<>();
+    private List<DiaryEntry> diaryEntries;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private User user;
 

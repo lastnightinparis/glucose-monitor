@@ -20,7 +20,7 @@ public class Product implements Serializable {
 
     @Column(name = "product_name")
     private String name;
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Meal> meals = new ArrayList<>();
 }

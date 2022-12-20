@@ -21,13 +21,10 @@ public class Meal implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "datetime")
     private Date timestamp;
-    @OneToOne(mappedBy = "meal")
-    @ToString.Exclude
-    private DiaryEntry diaryEntry;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "meal_product",
-    joinColumns = @JoinColumn(name = "meal_id"),
-    inverseJoinColumns = @JoinColumn(name = "product_id"))
+            joinColumns = @JoinColumn(name = "meal_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
     @ToString.Exclude
     private List<Product> products = new ArrayList<>();
 }
