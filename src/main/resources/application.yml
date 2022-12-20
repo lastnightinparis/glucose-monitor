@@ -16,8 +16,8 @@ spring:
     change-log: db.changelog/db.changelog-master.yaml
   cache:
     type: redis
-  redis:
-    host: "c-c9qfajrlp2bb7l2u11h3.rw.mdb.yandexcloud.net"
-    port: 6379
-    password: "redis891"
-    database: 0
+  data:
+    redis:
+      port: 6379
+      host: "c-c9qfajrlp2bb7l2u11h3.rw.mdb.yandexcloud.net"
+      password: "redis891"

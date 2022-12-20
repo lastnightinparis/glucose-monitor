@@ -3,8 +3,6 @@ services:
   glucose-monitor:
     container_name: glucose-monitor
     image: glucose-monitor:latest
-    extra_hosts:
-      - "c-c9qfajrlp2bb7l2u11h3.rw.mdb.yandexcloud.net:10.128.0.29"
     ports:
       - 8081:8081
     expose:
