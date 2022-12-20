@@ -20,5 +20,4 @@ spring:
     host: "c-c9qfajrlp2bb7l2u11h3.rw.mdb.yandexcloud.net"
     port: 6379
     password: "redis891"
-    url: "jdbc:redis://c-c9qfajrlp2bb7l2u11h3.rw.mdb.yandexcloud.net:6379/0"
     database: 0
