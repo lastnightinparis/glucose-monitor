@@ -32,9 +32,10 @@ public class DiaryController {
     }
 
     @PostMapping("/entry/add/{diaryId}")
-    public ResponseEntity<DiaryEntryDto> addDiaryEntry(@Valid @RequestBody DiaryEntryDto diaryEntryDto,
-                                                       @PathVariable UUID diaryId) {
-        return ResponseEntity.ok(diaryService.addDiaryEntry(diaryEntryDto, diaryId));
+    public ResponseEntity<String> addDiaryEntry(@Valid @RequestBody DiaryEntryDto diaryEntryDto,
+                                                @PathVariable UUID diaryId) {
+        diaryService.addDiaryEntry(diaryEntryDto, diaryId);
+        return ResponseEntity.ok("Successfully add!");
     }
 
 

@@ -54,7 +54,7 @@ public class DiaryService {
     }
 
     @Transactional
-    public DiaryEntryDto addDiaryEntry(DiaryEntryDto diaryEntryDto, UUID diaryId) {
+    public void addDiaryEntry(DiaryEntryDto diaryEntryDto, UUID diaryId) {
         DiaryEntry diaryEntry = modelMapper.map(diaryEntryDto, DiaryEntry.class);
         Optional<Diary> optionalDiary = diaryRepository.findById(diaryId);
         if (optionalDiary.isPresent()) {
@@ -62,8 +62,6 @@ public class DiaryService {
             diary.getDiaryEntries().add(diaryEntry);
             diaryEntry.setDiary(diary);
             Diary saved = diaryRepository.save(diary);
-            Optional<DiaryEntry> any = saved.getDiaryEntries().stream().filter(v -> v.getTimestamp().equals(diaryEntry.getTimestamp())).findAny();
-            return modelMapper.map(any.get(), DiaryEntryDto.class);
         } else {
             throw new NoSuchDiaryException();
         }
