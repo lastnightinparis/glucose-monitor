@@ -111,7 +111,6 @@ public class DiaryService {
         Map<List<ProductDto>, Double> map = new HashMap<>();
         List<DiaryEntry> entries = new ArrayList<>(list.stream().filter(v -> v.getMeal() != null).toList());
         entries.sort(Comparator.comparing(o -> o.getMeal().getTimestamp()));
-        System.out.println(Arrays.toString(entries.toArray()));
         for (int i = 1; i < entries.size(); i++) {
             double diff = entries.get(i).getGlucose_level() - entries.get(i - 1).getGlucose_level();
             if (diff > 0.2) {

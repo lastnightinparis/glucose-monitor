@@ -18,7 +18,7 @@ public class PlotService {
 
     public List<List<Object>> prepareData(Date from, Date to) {
         List<List<Object>> l = new ArrayList<>();
-        List<DiaryEntryDto> listDtos = diaryService.getDiaryEntriesInInstant(from, to);
+        List<DiaryEntryDto> listDtos = new ArrayList<>(diaryService.getDiaryEntriesInInstant(from, to));
         listDtos.sort(Comparator.comparing(DiaryEntryDto::getTimestamp));
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         for (DiaryEntryDto dto : listDtos) {
