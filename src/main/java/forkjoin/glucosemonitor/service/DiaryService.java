@@ -53,7 +53,6 @@ public class DiaryService {
         } else throw new NoSuchDiaryException();
     }
 
-    @CachePut(value = "diaryEntries", key = "#diaryEntryDto.id")
     @Transactional
     public DiaryEntryDto addDiaryEntry(DiaryEntryDto diaryEntryDto, UUID diaryId) {
         DiaryEntry diaryEntry = modelMapper.map(diaryEntryDto, DiaryEntry.class);
@@ -70,7 +69,6 @@ public class DiaryService {
     }
 
     @Transactional
-    @CacheEvict(value = "diaryEntries", key = "#diaryEntryId")
     public void deleteDiaryEntryById(UUID diaryEntryId) {
         diaryEntryRepository.deleteById(diaryEntryId);
     }
