@@ -61,8 +61,9 @@ public class DiaryService {
             Diary diary = optionalDiary.get();
             diary.getDiaryEntries().add(diaryEntry);
             diaryEntry.setDiary(diary);
-            diaryRepository.save(diary);
-            return modelMapper.map(diary.getDiaryEntries().get(0), DiaryEntryDto.class);
+            Diary saved = diaryRepository.save(diary);
+            Optional<DiaryEntry> any = saved.getDiaryEntries().stream().filter(v -> v.getTimestamp().equals(diaryEntry.getTimestamp())).findAny();
+            return modelMapper.map(any.get(), DiaryEntryDto.class);
         } else {
             throw new NoSuchDiaryException();
         }
